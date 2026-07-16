@@ -1,0 +1,42 @@
+{
+  "hero.eyebrow": "Community & Support",
+  "hero.title": "Fundraising & Events",
+  "hero.subtitle": "We host events that raise funds to support our students, with multiple ways to contribute — whether you join us in person or give on your own time.",
+
+  "events.heading": "Events We've Hosted",
+  "events.lead": "Throughout the year the PTA organizes fun community events that raise money for school programs.",
+  "events[0].label": "🎲 Trivia Night at Healy's",
+  "events[0].note": "Parents Night Out",
+  "events[1].label": "🍝 Spaghetti Dinner",
+  "events[2].label": "🎃 Harvest Festival",
+  "events[3].label": "🎨 Color Fest",
+  "events[4].label": "✈️ Urban Air Spirit Night",
+  "events[4].note": "12/21",
+  "events[5].label": "🌊 Soft Play Night",
+  "events[6].label": "💝 Valentine's Choco Pops Sale",
+  "events[7].label": "🌯 Chipotle Fundraiser",
+  "events[7].note": "20% to 8th grade class",
+  "events[8].label": "🥞 Pancake Breakfast",
+  "events[9].label": "🖼️ Art Gallery Auction",
+
+  "gallery.heading": "Event Photos",
+
+  "shop.heading": "Shop & Support",
+  "shop.lead": "Support the PTA while shopping — at no extra cost to you.",
+  "shop.amazon.title": "Amazon",
+  "shop.amazon.body": "Click through to Amazon via our link before checking out. The PTA receives a percentage of your purchase at no extra expense to you.",
+  "shop.amazon.href": "https://www.amazon.com/?tag=ps5pta-20",
+  "shop.mabels.title": "Mabel's Labels",
+  "shop.mabels.body": "Order personalized labels and the PTA earns a portion of your sale. Use our fundraiser link when you shop.",
+  "shop.mabels.href": "https://mabelslabels.com/c/?funId=927&cur_website=us_website",
+  "shop.shoprite.title": "ShopRite for My School",
+  "shop.shoprite.body": "Register your ShopRite card with our school so your grocery purchases generate funds for PS5.",
+  "shop.shoprite.href": "http://www.shopriteformyschool.com/",
+  "shop.pediped.title": "Pediped",
+  "shop.pediped.body": "Shop for kids' shoes through Pediped and support the PTA. Registration required — contact us for the code.",
+  "shop.pediped.href": "http://pediped.com/",
+
+  "cta.heading": "Want to Help Plan an Event?",
+  "cta.body": "We'd love your help organizing and running events. Email us to get involved.",
+  "cta.email": "jerseycityps5pta@gmail.com"
+}

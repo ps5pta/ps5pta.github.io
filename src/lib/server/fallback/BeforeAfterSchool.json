@@ -1,0 +1,39 @@
+{
+  "hero.eyebrow": "School Programs",
+  "hero.title": "Before & After School Programs",
+  "hero.subtitle": "Safe, supervised care before and after the school day, plus enrichment classes through our After School Program.",
+
+  "morningStars.heading": "🌅 Morning Stars",
+  "morningStars.hours": "7:00am – 8:30am (students must arrive by 8:00am)",
+  "morningStars.notAvailable": "Delayed opening days",
+  "morningStars.snacks": "Morning Stars students receive the free school breakfast when the school day begins.",
+
+  "casper.heading": "🌇 CASPER After-Care",
+  "casper.hours": "2:45pm – 6:00pm",
+  "casper.notAvailable": "Half days, teacher-parent conferences, or professional development days",
+  "casper.snacks": "CASPER provides afternoon snacks.",
+
+  "assistance.body": "Need financial assistance? Contact the Urban League at (201) 451-8888 or visit ulohc.org/programs/nj-cares-for-kids.",
+  "assistance.href": "http://www.ulohc.org/programs/nj-cares-for-kids/",
+  "payment.body": "Payment policy: Monthly payments apply with a 5-day grace period. Children cannot attend if their balance is unpaid by the 10th of the month.",
+
+  "asp.heading": "After School Enrichment Program (ASP)",
+  "asp.lead": "The PS5 ASP offers a wide range of enrichment classes at reduced cost, with scholarships available.",
+  "asp.who": "PreK 4 through 8th grade (not PreK 3)",
+  "asp.when": "Weekdays, 3:00pm – 5:00pm",
+  "asp.cost": "Reduced fee; scholarships available — contact the PTA for details.",
+  "asp.classesHeading": "Current classes include:",
+  "asp.class[0]": "Art",
+  "asp.class[1]": "Breakdancing",
+  "asp.class[2]": "Chess",
+  "asp.class[3]": "Coding",
+  "asp.class[4]": "Crochet",
+  "asp.class[5]": "Dance",
+  "asp.class[6]": "Beginner French",
+  "asp.class[7]": "Lego",
+  "asp.class[8]": "Mandarin",
+  "asp.class[9]": "Musical Theatre",
+  "asp.class[10]": "Soccer",
+  "asp.class[11]": "Ukulele",
+  "asp.contactEmail": "jerseycityps5pta@gmail.com"
+}

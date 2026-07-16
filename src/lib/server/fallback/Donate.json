@@ -1,0 +1,26 @@
+{
+  "hero.eyebrow": "Give Today",
+  "hero.title": "Support Our Students",
+  "hero.subtitle": "Help us create amazing experiences for our students. Every contribution — big or small — makes a difference.",
+
+  "paypal.title": "PayPal",
+  "paypal.body": "Choose any donation amount. Quick, secure, and goes directly to our school programs.",
+  "paypal.href": "https://www.paypal.com/fundraiser/charity/1489494",
+  "paypal.buttonLabel": "Donate via PayPal",
+
+  "givebacks.title": "Givebacks",
+  "givebacks.body": "Join the PTA through Givebacks — choose a membership level that fits you as a parent, teacher, or community supporter.",
+  "givebacks.href": "https://ps5pta.givebacks.com/shop",
+  "givebacks.buttonLabel": "Join via Givebacks",
+
+  "cash.title": "Cash",
+  "cash.body": "Prefer in person? Hand your donation to your child's teacher or any PTA board member. Every dollar goes toward our school community.",
+  "cash.note": "No link needed — just show up!",
+
+  "notice.body": "PS5 PTA is a 501(c)3 nonprofit organization — your donation is tax-deductible. EIN: 46-1009361.",
+
+  "where.heading": "Where Your Money Goes",
+  "where.body": "Every dollar supports programs directly benefiting PS5 students — theater, dance, assemblies, multicultural celebrations, school improvements, carnivals, awards, after-school enrichment, and family support.",
+  "where.cta1Label": "See Our Programs",
+  "where.cta2Label": "See Our Events"
+}
