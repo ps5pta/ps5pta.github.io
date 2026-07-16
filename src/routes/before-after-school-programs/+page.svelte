@@ -4,7 +4,7 @@
 	import { pluckList } from '$lib/content-utils.js';
 
 	let { data } = $props();
-	let c = data.content;
+	let c = $derived(data.content);
 
 	let classes = $derived(pluckList(c, 'asp.class'));
 </script>

@@ -5,7 +5,7 @@
 	import { pluckIndexed } from '$lib/content-utils.js';
 
 	let { data } = $props();
-	let c = data.content;
+	let c = $derived(data.content);
 
 	let bullets = $derived(
 		Object.keys(c)

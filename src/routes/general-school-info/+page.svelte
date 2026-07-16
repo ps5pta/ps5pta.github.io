@@ -5,7 +5,7 @@
 	import { pluckList, pluckIndexed } from '$lib/content-utils.js';
 
 	let { data } = $props();
-	let c = data.content;
+	let c = $derived(data.content);
 
 	let kTo5Bullets = $derived(pluckList(c, 'uniform.kto5.bullet'));
 	let middleBullets = $derived(pluckList(c, 'uniform.middle.bullet'));

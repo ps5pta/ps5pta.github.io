@@ -3,7 +3,7 @@
 	import Card from '$lib/components/Card.svelte';
 
 	let { data } = $props();
-	let c = data.content;
+	let c = $derived(data.content);
 </script>
 
 <svelte:head>

@@ -5,7 +5,7 @@
 	import { pluckIndexed, pluckList } from '$lib/content-utils.js';
 
 	let { data } = $props();
-	let c = data.content;
+	let c = $derived(data.content);
 
 	let chessFaq = $derived(pluckIndexed(c, 'chess.faq'));
 	let cultureProjects = $derived(pluckList(c, 'culture.project'));
