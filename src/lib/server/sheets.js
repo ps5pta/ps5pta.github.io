@@ -1,11 +1,25 @@
 import { GoogleAuth } from 'google-auth-library';
 import { env } from '$env/dynamic/private';
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+
+import HomeFallback from './fallback/Home.json';
+import ClubsFallback from './fallback/Clubs.json';
+import FundraisingFallback from './fallback/Fundraising.json';
+import BeforeAfterSchoolFallback from './fallback/BeforeAfterSchool.json';
+import GeneralInfoFallback from './fallback/GeneralInfo.json';
+import DonateFallback from './fallback/Donate.json';
+
+// Statically imported (not read via fs) so Vite bundles these correctly
+// regardless of how the server code gets chunked at build time.
+const FALLBACKS = {
+	Home: HomeFallback,
+	Clubs: ClubsFallback,
+	Fundraising: FundraisingFallback,
+	BeforeAfterSchool: BeforeAfterSchoolFallback,
+	GeneralInfo: GeneralInfoFallback,
+	Donate: DonateFallback
+};
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
-const FALLBACK_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fallback');
 
 let authClient;
 
@@ -40,12 +54,6 @@ async function fetchTabRows(tabName) {
 	return data.values ?? [];
 }
 
-function loadFallback(tabName) {
-	const file = path.join(FALLBACK_DIR, `${tabName}.json`);
-	if (!fs.existsSync(file)) return {};
-	return JSON.parse(fs.readFileSync(file, 'utf-8'));
-}
-
 function rowsToDict(rows) {
 	/** @type {Record<string, string>} */
 	const dict = {};
@@ -63,6 +71,6 @@ function rowsToDict(rows) {
  */
 export async function getPageContent(tabName) {
 	const rows = await fetchTabRows(tabName);
-	if (rows === null) return loadFallback(tabName);
+	if (rows === null) return FALLBACKS[tabName] ?? {};
 	return rowsToDict(rows);
 }

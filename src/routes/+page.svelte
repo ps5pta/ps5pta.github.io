@@ -23,7 +23,7 @@
 		'/assets/img/home/donor-healys-tavern-logo.jpg',
 		'/assets/img/home/donor-impress-ballroom-logo.jpg',
 		'/assets/img/home/donor-modern-family-dentistry-logo.jpg',
-		'/assets/img/home/donor-handyman-nick-instagram-icon.png'
+		'/assets/img/home/donor-handyman-nick-logo.png'
 	];
 </script>
 

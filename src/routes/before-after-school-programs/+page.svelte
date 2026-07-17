@@ -40,6 +40,9 @@
 		<div class="notice">
 			{c['payment.body']}
 		</div>
+		<div class="notice">
+			{c['apply.body']} <a href={c['apply.href']}>View application info &rarr;</a>
+		</div>
 	</div>
 </section>
 

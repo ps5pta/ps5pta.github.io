@@ -25,3 +25,6 @@ vite.config.ts.timestamp-*
 # Local-only service account keys — never commit these
 *service-account*.json
 *sheets-key*.json
+
+# Personal editor preferences
+.vscode/settings.json
