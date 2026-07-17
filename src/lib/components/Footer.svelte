@@ -25,5 +25,7 @@
 	</div>
 	<div class="footer-bottom">
 		PS5 PTA is a 501(c)3 nonprofit organization. EIN 46-1009361. Donations are tax-deductible.
+		<br />
+		Copyright 2026 &copy; Jersey City PS5 PTA
 	</div>
 </footer>

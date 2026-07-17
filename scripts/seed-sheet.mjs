@@ -8,9 +8,12 @@
  * or via env vars:
  *   SERVICE_ACCOUNT_KEY_PATH=/path/to/key.json CONTENT_SHEET_ID=<id> node scripts/seed-sheet.mjs
  *
- * Creates one tab per page (if missing) with a key/label/value/notes header,
- * and writes a row per content key. Existing rows are overwritten — this is
- * meant to (re-)seed the sheet, not merge with manual edits made since.
+ * Two tab formats:
+ *   - DICT tabs: key/label/value/notes rows (one page-level field per row).
+ *   - TABLE tabs: a header row (e.g. Section/Image/Heading/Text) followed by
+ *     one row per item — the fallback fixture is an array of objects.
+ * Both are (re-)written in full — this seeds the sheet, it doesn't merge with
+ * manual edits made since.
  */
 import { GoogleAuth } from 'google-auth-library';
 import fs from 'node:fs';
@@ -20,7 +23,12 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FALLBACK_DIR = path.join(__dirname, '..', 'src', 'lib', 'server', 'fallback');
 
-const TABS = ['Home', 'Clubs', 'Fundraising', 'BeforeAfterSchool', 'GeneralInfo', 'Donate'];
+const DICT_TABS = ['Home', 'Clubs', 'Fundraising', 'BeforeAfterSchool', 'GeneralInfo', 'Donate'];
+const TABLE_TABS = {
+	ClubsCards: ['section', 'image', 'heading', 'text']
+};
+
+const ALL_TABS = [...DICT_TABS, ...Object.keys(TABLE_TABS)];
 
 function parseArgs() {
 	const args = process.argv.slice(2);
@@ -71,7 +79,7 @@ async function getAuthedFetch(keyPath) {
 }
 
 async function ensureTabsExist(authedFetch, sheetId, existingTitles) {
-	const missing = TABS.filter((t) => !existingTitles.includes(t));
+	const missing = ALL_TABS.filter((t) => !existingTitles.includes(t));
 	if (missing.length === 0) return;
 
 	console.log(`Creating missing tabs: ${missing.join(', ')}`);
@@ -83,15 +91,7 @@ async function ensureTabsExist(authedFetch, sheetId, existingTitles) {
 	});
 }
 
-async function writeTab(authedFetch, sheetId, tabName) {
-	const fixturePath = path.join(FALLBACK_DIR, `${tabName}.json`);
-	const content = JSON.parse(fs.readFileSync(fixturePath, 'utf-8'));
-
-	const rows = [
-		['key', 'label', 'value', 'notes'],
-		...Object.entries(content).map(([key, value]) => [key, humanize(key), value, ''])
-	];
-
+async function writeValues(authedFetch, sheetId, tabName, rows) {
 	const range = encodeURIComponent(`${tabName}!A1`);
 	await authedFetch(
 		`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?valueInputOption=RAW`,
@@ -101,6 +101,26 @@ async function writeTab(authedFetch, sheetId, tabName) {
 		}
 	);
 	console.log(`Wrote ${rows.length - 1} rows to "${tabName}"`);
+}
+
+async function writeDictTab(authedFetch, sheetId, tabName) {
+	const fixturePath = path.join(FALLBACK_DIR, `${tabName}.json`);
+	const content = JSON.parse(fs.readFileSync(fixturePath, 'utf-8'));
+
+	const rows = [
+		['key', 'label', 'value', 'notes'],
+		...Object.entries(content).map(([key, value]) => [key, humanize(key), value, ''])
+	];
+	await writeValues(authedFetch, sheetId, tabName, rows);
+}
+
+async function writeTableTab(authedFetch, sheetId, tabName, columns) {
+	const fixturePath = path.join(FALLBACK_DIR, `${tabName}.json`);
+	const items = JSON.parse(fs.readFileSync(fixturePath, 'utf-8'));
+
+	const headerLabels = columns.map((c) => c.charAt(0).toUpperCase() + c.slice(1));
+	const rows = [headerLabels, ...items.map((item) => columns.map((c) => item[c] ?? ''))];
+	await writeValues(authedFetch, sheetId, tabName, rows);
 }
 
 async function main() {
@@ -117,8 +137,11 @@ async function main() {
 
 	await ensureTabsExist(authedFetch, sheetId, existingTitles);
 
-	for (const tab of TABS) {
-		await writeTab(authedFetch, sheetId, tab);
+	for (const tab of DICT_TABS) {
+		await writeDictTab(authedFetch, sheetId, tab);
+	}
+	for (const [tab, columns] of Object.entries(TABLE_TABS)) {
+		await writeTableTab(authedFetch, sheetId, tab, columns);
 	}
 
 	console.log('\nDone. Sheet is seeded with current site content.');
