@@ -92,6 +92,14 @@ async function ensureTabsExist(authedFetch, sheetId, existingTitles) {
 }
 
 async function writeValues(authedFetch, sheetId, tabName, rows) {
+	// Clear the whole tab first — a plain values.update PUT only overwrites the
+	// cells it targets, so a shrinking tab (fewer rows than last time) would
+	// otherwise leave old rows behind as dead orphans.
+	const clearRange = encodeURIComponent(`${tabName}!A1:Z10000`);
+	await authedFetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${clearRange}:clear`, {
+		method: 'POST'
+	});
+
 	const range = encodeURIComponent(`${tabName}!A1`);
 	await authedFetch(
 		`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?valueInputOption=RAW`,
