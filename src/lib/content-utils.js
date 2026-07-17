@@ -41,6 +41,31 @@ export function pluckList(content, prefix) {
 }
 
 /**
+ * Groups an array of row objects by a field, preserving the order each
+ * group's key first appears in.
+ *
+ * @param {Record<string, string>[]} rows
+ * @param {string} field
+ * @returns {{ key: string, items: Record<string, string>[] }[]}
+ */
+export function groupBy(rows, field) {
+	const order = [];
+	/** @type {Record<string, Record<string, string>[]>} */
+	const groups = {};
+
+	for (const row of rows) {
+		const key = row[field] || 'General';
+		if (!groups[key]) {
+			groups[key] = [];
+			order.push(key);
+		}
+		groups[key].push(row);
+	}
+
+	return order.map((key) => ({ key, items: groups[key] }));
+}
+
+/**
  * Groups an array of card rows by a field (default "section"), preserving the
  * order each section first appears in. Cards with a blank heading are treated
  * as a section's intro/lead text rather than an actual card.
@@ -50,23 +75,10 @@ export function pluckList(content, prefix) {
  * @returns {{ section: string, leads: Record<string, string>[], items: Record<string, string>[] }[]}
  */
 export function groupBySection(cards, field = 'section') {
-	const order = [];
-	/** @type {Record<string, Record<string, string>[]>} */
-	const groups = {};
-
-	for (const card of cards) {
-		const key = card[field] || 'General';
-		if (!groups[key]) {
-			groups[key] = [];
-			order.push(key);
-		}
-		groups[key].push(card);
-	}
-
-	return order.map((section) => ({
-		section,
-		leads: groups[section].filter((c) => !c.heading),
-		items: groups[section].filter((c) => c.heading)
+	return groupBy(cards, field).map(({ key, items }) => ({
+		section: key,
+		leads: items.filter((c) => !c.heading),
+		items: items.filter((c) => c.heading)
 	}));
 }
 

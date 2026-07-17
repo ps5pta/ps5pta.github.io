@@ -2,6 +2,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import Card from '$lib/components/Card.svelte';
 	import Gallery from '$lib/components/Gallery.svelte';
+	import RichText from '$lib/components/RichText.svelte';
 	import { pluckIndexed } from '$lib/content-utils.js';
 
 	let { data } = $props();
@@ -58,22 +59,12 @@
 		<h2>{c['shop.heading']}</h2>
 		<p class="lead">{c['shop.lead']}</p>
 		<div class="grid cols-2" style="margin-top:28px;">
-			<Card title={c['shop.amazon.title']}>
-				<p>{c['shop.amazon.body']}</p>
-				<a class="btn" href={c['shop.amazon.href']}>Shop Amazon &rarr;</a>
-			</Card>
-			<Card title={c['shop.mabels.title']}>
-				<p>{c['shop.mabels.body']}</p>
-				<a class="btn" href={c['shop.mabels.href']}>Shop Mabel's Labels &rarr;</a>
-			</Card>
-			<Card title={c['shop.shoprite.title']}>
-				<p>{c['shop.shoprite.body']}</p>
-				<a class="btn" href={c['shop.shoprite.href']}>Register at ShopRite &rarr;</a>
-			</Card>
-			<Card title={c['shop.pediped.title']}>
-				<p>{c['shop.pediped.body']}</p>
-				<a class="btn" href={c['shop.pediped.href']}>Shop Pediped &rarr;</a>
-			</Card>
+			{#each data.partners as partner}
+				<Card title={partner.heading}>
+					<RichText text={partner.text} />
+					{#if partner.href}<a class="btn" href={partner.href}>{partner.button || 'Learn more →'}</a>{/if}
+				</Card>
+			{/each}
 		</div>
 	</div>
 </section>

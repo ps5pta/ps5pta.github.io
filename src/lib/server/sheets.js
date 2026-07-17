@@ -4,7 +4,10 @@ import { env } from '$env/dynamic/private';
 import HomeFallback from './fallback/Home.json';
 import ClubsFallback from './fallback/Clubs.json';
 import ClubsCardsFallback from './fallback/ClubsCards.json';
+import BoardMembersFallback from './fallback/BoardMembers.json';
+import DonorsFallback from './fallback/Donors.json';
 import FundraisingFallback from './fallback/Fundraising.json';
+import FundraisingPartnersFallback from './fallback/FundraisingPartners.json';
 import BeforeAfterSchoolFallback from './fallback/BeforeAfterSchool.json';
 import GeneralInfoFallback from './fallback/GeneralInfo.json';
 import DonateFallback from './fallback/Donate.json';
@@ -21,7 +24,10 @@ const DICT_FALLBACKS = {
 };
 
 const TABLE_FALLBACKS = {
-	ClubsCards: ClubsCardsFallback
+	ClubsCards: ClubsCardsFallback,
+	BoardMembers: BoardMembersFallback,
+	Donors: DonorsFallback,
+	FundraisingPartners: FundraisingPartnersFallback
 };
 
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];

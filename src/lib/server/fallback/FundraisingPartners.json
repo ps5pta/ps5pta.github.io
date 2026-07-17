@@ -1,0 +1,26 @@
+[
+  {
+    "heading": "Amazon",
+    "text": "Click through to Amazon via our link before checking out. The PTA receives a percentage of your purchase at no extra expense to you.",
+    "href": "https://www.amazon.com/?tag=ps5pta-20",
+    "button": "Shop Amazon →"
+  },
+  {
+    "heading": "Mabel's Labels",
+    "text": "Order personalized labels and the PTA earns a portion of your sale. Use our fundraiser link when you shop.",
+    "href": "https://mabelslabels.com/c/?funId=927&cur_website=us_website",
+    "button": "Shop Mabel's Labels →"
+  },
+  {
+    "heading": "ShopRite for My School",
+    "text": "Register your ShopRite card with our school so your grocery purchases generate funds for PS5.",
+    "href": "http://www.shopriteformyschool.com/",
+    "button": "Register at ShopRite →"
+  },
+  {
+    "heading": "Pediped",
+    "text": "Shop for kids' shoes through Pediped and support the PTA. Registration required — contact us for the code.",
+    "href": "http://pediped.com/",
+    "button": "Shop Pediped →"
+  }
+]

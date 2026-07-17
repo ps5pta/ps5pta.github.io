@@ -2,7 +2,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import BoardList from '$lib/components/BoardList.svelte';
 	import DonorStrip from '$lib/components/DonorStrip.svelte';
-	import { pluckIndexed } from '$lib/content-utils.js';
+	import { groupBy, resolveImagePath } from '$lib/content-utils.js';
 
 	let { data } = $props();
 	let c = $derived(data.content);
@@ -14,17 +14,18 @@
 			.map((k) => c[k])
 	);
 
-	let officers = $derived(pluckIndexed(c, 'board.officers'));
-	let coordinators = $derived(pluckIndexed(c, 'board.coordinators'));
-	let chairs = $derived(pluckIndexed(c, 'board.chairs'));
-	let donors = $derived(pluckIndexed(c, 'donors'));
+	let boardGroups = $derived(
+		groupBy(data.boardMembers, 'group').map(({ key, items }) => ({ title: key, members: items }))
+	);
 
-	const donorImages = [
-		'/assets/img/home/donor-healys-tavern-logo.jpg',
-		'/assets/img/home/donor-impress-ballroom-logo.jpg',
-		'/assets/img/home/donor-modern-family-dentistry-logo.jpg',
-		'/assets/img/home/donor-handyman-nick-logo.png'
-	];
+	let donors = $derived(
+		data.donors.map((d) => ({
+			src: resolveImagePath(d.image),
+			alt: d.label,
+			href: d.href || undefined,
+			label: d.href ? d.label : undefined
+		}))
+	);
 </script>
 
 <svelte:head>
@@ -82,13 +83,7 @@
 <section class="block">
 	<div class="container">
 		<h2>{c['board.heading']}</h2>
-		<BoardList
-			groups={[
-				{ title: 'Executive Officers', members: officers },
-				{ title: 'Coordinators & Staff', members: coordinators },
-				{ title: 'Committee Chairs', members: chairs }
-			]}
-		/>
+		<BoardList groups={boardGroups} />
 	</div>
 </section>
 
@@ -96,13 +91,6 @@
 	<div class="container">
 		<h2>{c['donors.heading']}</h2>
 		<p class="lead">{c['donors.lead']}</p>
-		<DonorStrip
-			donors={donors.map((d, i) => ({
-				src: donorImages[i],
-				alt: d.label,
-				href: d.href,
-				label: d.href ? d.label : undefined
-			}))}
-		/>
+		<DonorStrip {donors} />
 	</div>
 </section>

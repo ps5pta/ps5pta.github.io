@@ -25,7 +25,10 @@ const FALLBACK_DIR = path.join(__dirname, '..', 'src', 'lib', 'server', 'fallbac
 
 const DICT_TABS = ['Home', 'Clubs', 'Fundraising', 'BeforeAfterSchool', 'GeneralInfo', 'Donate'];
 const TABLE_TABS = {
-	ClubsCards: ['section', 'image', 'heading', 'text']
+	ClubsCards: ['section', 'image', 'heading', 'text'],
+	BoardMembers: ['group', 'role', 'name'],
+	Donors: ['label', 'image', 'href'],
+	FundraisingPartners: ['heading', 'text', 'href', 'button']
 };
 
 const ALL_TABS = [...DICT_TABS, ...Object.keys(TABLE_TABS)];
