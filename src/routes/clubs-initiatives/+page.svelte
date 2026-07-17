@@ -2,7 +2,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import Card from '$lib/components/Card.svelte';
 	import RichText from '$lib/components/RichText.svelte';
-	import { groupBySection } from '$lib/content-utils.js';
+	import { groupBySection, resolveImagePath } from '$lib/content-utils.js';
 
 	let { data } = $props();
 	let c = $derived(data.content);
@@ -38,7 +38,7 @@
 			{#if sec.items.length > 0}
 				<div class="grid cols-2">
 					{#each sec.items as card}
-						<Card image={card.image} alt={card.heading} title={card.heading}>
+						<Card image={resolveImagePath(card.image)} alt={card.heading} title={card.heading}>
 							<RichText text={card.text} />
 						</Card>
 					{/each}

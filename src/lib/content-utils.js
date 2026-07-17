@@ -70,6 +70,22 @@ export function groupBySection(cards, field = 'section') {
 	}));
 }
 
+/**
+ * Resolves a sheet-entered image value into a usable src.
+ * Full URLs pass through untouched. Anything else is treated as relative to
+ * the site's /assets/ folder — "/assets/" is optional and stripped/re-added
+ * so "img/clubs/x.jpg", "/img/clubs/x.jpg", and "/assets/img/clubs/x.jpg" all
+ * resolve the same way.
+ *
+ * @param {string} value
+ */
+export function resolveImagePath(value) {
+	if (!value) return '';
+	if (/^https?:\/\//i.test(value)) return value;
+	const trimmed = value.replace(/^\/?assets\//, '').replace(/^\//, '');
+	return `/assets/${trimmed}`;
+}
+
 function escapeHtml(str) {
 	return str
 		.replace(/&/g, '&amp;')
