@@ -83,16 +83,39 @@ export function groupBySection(cards, field = 'section') {
 }
 
 /**
+ * Extracts a file ID from any common Google Drive share link shape:
+ *   .../file/d/FILE_ID/view?usp=...
+ *   drive.google.com/open?id=FILE_ID
+ *   drive.google.com/uc?id=FILE_ID
+ *   drive.google.com/thumbnail?id=FILE_ID&sz=...
+ *
+ * @param {string} value
+ * @returns {string | null}
+ */
+function extractDriveFileId(value) {
+	if (!/drive\.google\.com/i.test(value)) return null;
+	const pathMatch = value.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+	if (pathMatch) return pathMatch[1];
+	const queryMatch = value.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+	if (queryMatch) return queryMatch[1];
+	return null;
+}
+
+/**
  * Resolves a sheet-entered image value into a usable src.
- * Full URLs pass through untouched. Anything else is treated as relative to
- * the site's /assets/ folder — "/assets/" is optional and stripped/re-added
- * so "img/clubs/x.jpg", "/img/clubs/x.jpg", and "/assets/img/clubs/x.jpg" all
- * resolve the same way.
+ * Google Drive share links (any shape someone pastes from the "Copy link"
+ * button) are rewritten into Drive's direct-image thumbnail endpoint, which
+ * also gives free resizing. Other full URLs pass through untouched.
+ * Anything else is treated as relative to the site's /assets/ folder —
+ * "/assets/" is optional and stripped/re-added so "img/clubs/x.jpg",
+ * "/img/clubs/x.jpg", and "/assets/img/clubs/x.jpg" all resolve the same way.
  *
  * @param {string} value
  */
 export function resolveImagePath(value) {
 	if (!value) return '';
+	const driveFileId = extractDriveFileId(value);
+	if (driveFileId) return `https://drive.google.com/thumbnail?id=${driveFileId}&sz=w1000`;
 	if (/^https?:\/\//i.test(value)) return value;
 	const trimmed = value.replace(/^\/?assets\//, '').replace(/^\//, '');
 	return `/assets/${trimmed}`;
