@@ -2,17 +2,12 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import BoardList from '$lib/components/BoardList.svelte';
 	import DonorStrip from '$lib/components/DonorStrip.svelte';
-	import { groupBy, resolveImagePath } from '$lib/content-utils.js';
+	import { groupBy, pluckList, resolveImagePath } from '$lib/content-utils.js';
 
 	let { data } = $props();
 	let c = $derived(data.content);
 
-	let bullets = $derived(
-		Object.keys(c)
-			.filter((k) => k.startsWith('whatWeDo.bullet['))
-			.sort()
-			.map((k) => c[k])
-	);
+	let bullets = $derived(pluckList(c, 'whatWeDo.bullet'));
 
 	let boardGroups = $derived(
 		groupBy(data.boardMembers, 'group').map(({ key, items }) => ({ title: key, members: items }))
@@ -36,7 +31,12 @@
 	/>
 </svelte:head>
 
-<Hero eyebrow={c['hero.eyebrow']} title={c['hero.title']} subtitle={c['hero.subtitle']} photo="/assets/img/home/hero-unsplash.jpg">
+<Hero
+	eyebrow={c['hero.eyebrow']}
+	title={c['hero.title']}
+	subtitle={c['hero.subtitle']}
+	photo={resolveImagePath(c['hero.image'])}
+>
 	<div class="btn-row" style="justify-content:center;">
 		<a class="btn" href="/donate">Support the PTA</a>
 		<a class="btn outline" href="/clubs-initiatives">Explore Clubs &amp; Initiatives</a>
