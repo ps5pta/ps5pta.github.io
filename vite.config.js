@@ -18,7 +18,14 @@ export default defineConfig({
 				fallback: undefined,
 				precompress: false,
 				strict: true
-			})
+			}),
+
+			// A single bad value in the content sheet (e.g. a broken image path)
+			// must not be able to fail the ENTIRE build and block every other
+			// page's updates from deploying — warn and keep going instead.
+			prerender: {
+				handleHttpError: 'warn'
+			}
 		})
 	]
 });
