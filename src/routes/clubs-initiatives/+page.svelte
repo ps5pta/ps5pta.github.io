@@ -2,11 +2,12 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import Card from '$lib/components/Card.svelte';
 	import RichText from '$lib/components/RichText.svelte';
-	import { groupBySection, resolveImagePath } from '$lib/content-utils.js';
+	import { groupBySection, resolveImagePath, pluckList } from '$lib/content-utils.js';
 
 	let { data } = $props();
 	let c = $derived(data.content);
 	let sections = $derived(groupBySection(data.cards));
+	let getInvolvedItems = $derived(pluckList(c, 'getInvolved.item'));
 </script>
 
 <svelte:head>
@@ -52,5 +53,12 @@
 	<div class="container">
 		<h2>{c['getInvolved.heading']}</h2>
 		<p class="lead" style="margin:0 auto;">{c['getInvolved.body']}</p>
+		{#if getInvolvedItems.length > 0}
+			<ul style="text-align:left; max-width:640px; margin:24px auto 0;">
+				{#each getInvolvedItems as item}
+					<li style="margin-bottom:12px;"><RichText text={item} /></li>
+				{/each}
+			</ul>
+		{/if}
 	</div>
 </section>
