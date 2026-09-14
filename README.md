@@ -1,6 +1,6 @@
 # PS5 PTA Website
 
-SvelteKit static site for the Jersey City PS5 PTA, deployed to GitHub Pages at [ps5pta.github.io](https://ps5pta.github.io/).
+SvelteKit static site for the Jersey City PS5 PTA, deployed via GitHub Pages and served at [ps5pta.org](https://ps5pta.org/) (the underlying `ps5pta.github.io` host now redirects there).
 
 ## Content model
 
