@@ -17,13 +17,15 @@ npm run build     # set GOOGLE_SERVICE_ACCOUNT_KEY + CONTENT_SHEET_ID to pull li
 npm run preview
 ```
 
-## Re-seeding the Google Sheet
+## Updating the Google Sheet from fallback fixtures
 
 ```sh
-node scripts/seed-sheet.mjs --key /path/to/service-account.json --sheet-id <SHEET_ID>
+node scripts/seed-sheet.mjs --key /path/to/service-account.json --sheet-id <SHEET_ID> --tabs Clubs,FundraisingPartners
 ```
 
-Creates any missing tabs and (re)writes every row from the fallback fixtures. This overwrites the `value` column — don't run it after volunteers have made live edits you want to keep, unless you've updated the fixtures to match first.
+Overwrites only the listed tab(s) with the current fallback JSON. This discards any live edits made directly in the Sheet for those specific tabs since the fixtures were last committed — make sure your local fixture reflects the state you actually want before running it.
+
+A full reseed of every tab is rarely what you want (it wipes tabs you haven't touched locally too, e.g. volunteer-managed rosters) and requires `--all --i-understand-this-overwrites-everything`.
 
 ## Deployment
 

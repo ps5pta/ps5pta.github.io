@@ -1,19 +1,22 @@
 #!/usr/bin/env node
 /**
- * One-time (or re-run-anytime) script that populates the live Google Sheet
- * from the committed fallback JSON fixtures in src/lib/server/fallback/.
+ * Populates the live Google Sheet from the committed fallback JSON fixtures
+ * in src/lib/server/fallback/. Each run OVERWRITES the targeted tab(s)
+ * entirely — it does not merge with manual edits made directly in the Sheet
+ * since the fixtures were last committed.
  *
- * Usage:
- *   node scripts/seed-sheet.mjs --key /path/to/service-account.json --sheet-id <SHEET_ID>
- * or via env vars:
- *   SERVICE_ACCOUNT_KEY_PATH=/path/to/key.json CONTENT_SHEET_ID=<id> node scripts/seed-sheet.mjs
+ * Usage (only touches the tab(s) you list — this is the normal case):
+ *   node scripts/seed-sheet.mjs --key /path/to/service-account.json --sheet-id <SHEET_ID> --tabs Clubs,FundraisingPartners
+ *
+ * Full reseed of every tab (rarely correct — wipes the whole sheet, including
+ * any tab you haven't touched locally in months). Requires an explicit
+ * extra confirmation flag so it can't happen by accident:
+ *   node scripts/seed-sheet.mjs --key ... --sheet-id ... --all --i-understand-this-overwrites-everything
  *
  * Two tab formats:
  *   - DICT tabs: key/label/value/notes rows (one page-level field per row).
  *   - TABLE tabs: a header row (e.g. Section/Image/Heading/Text) followed by
  *     one row per item — the fallback fixture is an array of objects.
- * Both are (re-)written in full — this seeds the sheet, it doesn't merge with
- * manual edits made since.
  */
 import { GoogleAuth } from 'google-auth-library';
 import fs from 'node:fs';
@@ -39,9 +42,13 @@ function parseArgs() {
 		const i = args.indexOf(flag);
 		return i === -1 ? undefined : args[i + 1];
 	};
+	const tabsArg = get('--tabs');
 	return {
 		keyPath: get('--key') ?? process.env.SERVICE_ACCOUNT_KEY_PATH,
-		sheetId: get('--sheet-id') ?? process.env.CONTENT_SHEET_ID
+		sheetId: get('--sheet-id') ?? process.env.CONTENT_SHEET_ID,
+		tabs: tabsArg ? tabsArg.split(',').map((t) => t.trim()).filter(Boolean) : undefined,
+		all: args.includes('--all'),
+		confirmedFullOverwrite: args.includes('--i-understand-this-overwrites-everything')
 	};
 }
 
@@ -135,9 +142,33 @@ async function writeTableTab(authedFetch, sheetId, tabName, columns) {
 }
 
 async function main() {
-	const { keyPath, sheetId } = parseArgs();
+	const { keyPath, sheetId, tabs, all, confirmedFullOverwrite } = parseArgs();
 	if (!keyPath || !sheetId) {
-		console.error('Usage: node scripts/seed-sheet.mjs --key <path-to-json-key> --sheet-id <sheet-id>');
+		console.error('Usage: node scripts/seed-sheet.mjs --key <path-to-json-key> --sheet-id <sheet-id> --tabs <TabA,TabB>');
+		process.exit(1);
+	}
+	if (!tabs && !all) {
+		console.error(
+			'Refusing to run: specify --tabs <TabA,TabB> to overwrite only those tabs, ' +
+				'or pass --all --i-understand-this-overwrites-everything to reseed every tab ' +
+				'(this discards any manual edits made directly in the Sheet since the fixtures ' +
+				'were last committed).'
+		);
+		process.exit(1);
+	}
+	if (all && !confirmedFullOverwrite) {
+		console.error(
+			'--all requires --i-understand-this-overwrites-everything as well — ' +
+				'a full reseed wipes every tab in the live Sheet, including ones you ' +
+				"haven't touched locally. Use --tabs <TabA,TabB> instead unless you truly mean this."
+		);
+		process.exit(1);
+	}
+
+	const targetTabs = all ? ALL_TABS : tabs;
+	const unknown = targetTabs.filter((t) => !ALL_TABS.includes(t));
+	if (unknown.length > 0) {
+		console.error(`Unknown tab(s): ${unknown.join(', ')}. Known tabs: ${ALL_TABS.join(', ')}`);
 		process.exit(1);
 	}
 
@@ -148,14 +179,15 @@ async function main() {
 
 	await ensureTabsExist(authedFetch, sheetId, existingTitles);
 
-	for (const tab of DICT_TABS) {
-		await writeDictTab(authedFetch, sheetId, tab);
-	}
-	for (const [tab, columns] of Object.entries(TABLE_TABS)) {
-		await writeTableTab(authedFetch, sheetId, tab, columns);
+	for (const tab of targetTabs) {
+		if (DICT_TABS.includes(tab)) {
+			await writeDictTab(authedFetch, sheetId, tab);
+		} else {
+			await writeTableTab(authedFetch, sheetId, tab, TABLE_TABS[tab]);
+		}
 	}
 
-	console.log('\nDone. Sheet is seeded with current site content.');
+	console.log(`\nDone. Wrote: ${targetTabs.join(', ')}.`);
 }
 
 main().catch((err) => {
