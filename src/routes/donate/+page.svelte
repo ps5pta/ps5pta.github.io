@@ -44,7 +44,7 @@
 		<h2>{c['where.heading']}</h2>
 		<p class="lead" style="margin:0 auto;">{c['where.body']}</p>
 		<div class="btn-row" style="justify-content:center; margin-top:20px;">
-			<a class="btn" href="/clubs-initiatives">{c['where.cta1Label']}</a>
+			<a class="btn" href="/clubs">{c['where.cta1Label']}</a>
 			<a class="btn" style="background:var(--navy); color:var(--white);" href="/fundraising-events">{c['where.cta2Label']}</a>
 		</div>
 	</div>

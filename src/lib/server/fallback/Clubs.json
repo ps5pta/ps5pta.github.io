@@ -1,8 +1,21 @@
 {
-  "intro.heading": "Clubs & Initiatives",
-  "intro.lead1": "Our PTA is proud to support a range of enriching clubs and initiatives that help students explore their interests, build new skills, and grow in confidence beyond the classroom.",
+  "intro.heading": "Clubs",
+  "intro.lead1": "Our PTA is proud to support a range of enriching clubs that help students explore their interests, build new skills, and grow in confidence beyond the classroom.",
   "intro.lead2": "These opportunities reflect our commitment to nurturing well-rounded learners and an inclusive, vibrant school community.",
   "intro.contactNote": "Want to get involved? Email us at jerseycityps5pta@gmail.com.",
+
+  "garden.logo": "img/garden/garden-club-logo.png",
+  "garden.tagline": "SMALL GARDEN HUGE IMPACT",
+  "garden.subtitle": "P.S.5 Garden Club for Grades 6-8 — Wednesdays 3-4PM",
+  "garden.program[0]": "Stem for S.T.E.M",
+  "garden.program[1]": "Grow a vegetable garden",
+  "garden.program[2]": "New Jersey Native Herb Conservatory",
+  "garden.program[3]": "K and pre-K flower kindness garden",
+  "garden.program[4]": "Sustainability and recycle: compost and worm",
+  "garden.program[5]": "Vertical and hydroponic garden",
+  "garden.program[6]": "Bird feeders and save the Monarch butterfly",
+  "garden.program[7]": "Anemometer, rain gauge, thermometer, barometer and wind vane",
+  "garden.closing": "This Garden was made possible, thanks to our sponsors, Green Team and school parent volunteers!",
 
   "getInvolved.heading": "Get Involved",
   "getInvolved.body": "Have ideas? We want to hear from you! Reach out at jerseycityps5pta@gmail.com.",

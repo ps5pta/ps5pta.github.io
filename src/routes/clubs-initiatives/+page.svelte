@@ -1,64 +1,86 @@
 <script>
-	import Hero from '$lib/components/Hero.svelte';
-	import Card from '$lib/components/Card.svelte';
-	import RichText from '$lib/components/RichText.svelte';
-	import { groupBySection, resolveImagePath, pluckList } from '$lib/content-utils.js';
+	import { onMount } from 'svelte';
 
-	let { data } = $props();
-	let c = $derived(data.content);
-	let sections = $derived(groupBySection(data.cards));
-	let getInvolvedItems = $derived(pluckList(c, 'getInvolved.item'));
+	const target = '/clubs';
+
+	onMount(() => {
+		window.location.replace(target);
+	});
 </script>
 
 <svelte:head>
-	<title>Clubs & Initiatives — PS5 PTA</title>
-	<meta
-		name="description"
-		content="Clubs and enrichment initiatives at Dr. Michael Conti PS5 — chess, culture, garden, music theatre, and more."
-	/>
+	<title>Redirecting to Clubs — PS5 PTA</title>
+	<meta http-equiv="refresh" content={`0;url=${target}`} />
 </svelte:head>
 
-<Hero eyebrow="Get Involved" title={c['intro.heading']} subtitle={c['intro.lead1']} />
+<main>
+	<div class="spinner" aria-hidden="true"></div>
+	<p class="eyebrow">PS5 PTA</p>
+	<h1>Taking you to Clubs…</h1>
+	<p class="note">
+		This page has moved. If you're not redirected automatically,
+		<a href={target}>click here</a>.
+	</p>
+</main>
 
-<section class="block">
-	<div class="container">
-		<p class="lead">{c['intro.lead2']}</p>
-		<p class="lead">{c['intro.contactNote']}</p>
-	</div>
-</section>
+<style>
+	:global(html),
+	:global(body) {
+		background: #ffffff;
+	}
 
-{#each sections as sec, i}
-	<section class="block" class:alt={i % 2 === 0}>
-		<div class="container">
-			<h2>{sec.section}</h2>
-			{#each sec.leads as lead}
-				<div class="lead">
-					<RichText text={lead.text} />
-				</div>
-			{/each}
-			{#if sec.items.length > 0}
-				<div class="grid cols-2">
-					{#each sec.items as card}
-						<Card image={resolveImagePath(card.image)} alt={card.heading} title={card.heading}>
-							<RichText text={card.text} />
-						</Card>
-					{/each}
-				</div>
-			{/if}
-		</div>
-	</section>
-{/each}
+	main {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 24px;
+		font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+	}
 
-<section class="block text-center">
-	<div class="container">
-		<h2>{c['getInvolved.heading']}</h2>
-		<p class="lead" style="margin:0 auto;">{c['getInvolved.body']}</p>
-		{#if getInvolvedItems.length > 0}
-			<ul style="text-align:left; max-width:640px; margin:24px auto 0;">
-				{#each getInvolvedItems as item}
-					<li style="margin-bottom:12px;"><RichText text={item} /></li>
-				{/each}
-			</ul>
-		{/if}
-	</div>
-</section>
+	.spinner {
+		width: 36px;
+		height: 36px;
+		border: 3px solid #f0e4c8;
+		border-top-color: #f0b429;
+		border-radius: 50%;
+		margin-bottom: 24px;
+		animation: spin 0.8s linear infinite;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.eyebrow {
+		margin: 0 0 8px;
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #f0b429;
+	}
+
+	h1 {
+		margin: 0 0 12px;
+		font-family: Georgia, "Times New Roman", serif;
+		font-size: 1.5rem;
+		color: #16264a;
+	}
+
+	.note {
+		margin: 0;
+		color: #5a6478;
+		font-size: 0.95rem;
+	}
+
+	.note a {
+		color: #16264a;
+		font-weight: 600;
+		text-decoration: underline;
+	}
+</style>

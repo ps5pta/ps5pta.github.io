@@ -4,6 +4,9 @@ import { env } from '$env/dynamic/private';
 import HomeFallback from './fallback/Home.json';
 import ClubsFallback from './fallback/Clubs.json';
 import ClubsCardsFallback from './fallback/ClubsCards.json';
+import InitiativesFallback from './fallback/Initiatives.json';
+import InitiativesCardsFallback from './fallback/InitiativesCards.json';
+import GardenSponsorsFallback from './fallback/GardenSponsors.json';
 import BoardMembersFallback from './fallback/BoardMembers.json';
 import DonorsFallback from './fallback/Donors.json';
 import FundraisingFallback from './fallback/Fundraising.json';
@@ -17,6 +20,7 @@ import DonateFallback from './fallback/Donate.json';
 const DICT_FALLBACKS = {
 	Home: HomeFallback,
 	Clubs: ClubsFallback,
+	Initiatives: InitiativesFallback,
 	Fundraising: FundraisingFallback,
 	BeforeAfterSchool: BeforeAfterSchoolFallback,
 	GeneralInfo: GeneralInfoFallback,
@@ -25,6 +29,8 @@ const DICT_FALLBACKS = {
 
 const TABLE_FALLBACKS = {
 	ClubsCards: ClubsCardsFallback,
+	InitiativesCards: InitiativesCardsFallback,
+	GardenSponsors: GardenSponsorsFallback,
 	BoardMembers: BoardMembersFallback,
 	Donors: DonorsFallback,
 	FundraisingPartners: FundraisingPartnersFallback

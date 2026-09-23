@@ -3,10 +3,11 @@
 
 	const links = [
 		{ href: '/', label: 'Home' },
-		{ href: '/clubs-initiatives', label: 'Clubs & Initiatives' },
+		{ href: '/clubs', label: 'Clubs' },
+		{ href: '/initiatives', label: 'Initiatives' },
 		{ href: '/fundraising-events', label: 'Fundraising & Events' },
-		{ href: '/before-after-school-programs', label: 'Before & After School' },
-		{ href: '/general-school-info', label: 'General School Info' }
+		{ href: '/before-after-school-programs', label: 'Before & After' },
+		{ href: '/general-school-info', label: 'School Info' }
 	];
 
 	function isActive(href) {

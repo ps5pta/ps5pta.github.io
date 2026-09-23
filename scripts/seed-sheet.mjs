@@ -26,9 +26,11 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FALLBACK_DIR = path.join(__dirname, '..', 'src', 'lib', 'server', 'fallback');
 
-const DICT_TABS = ['Home', 'Clubs', 'Fundraising', 'BeforeAfterSchool', 'GeneralInfo', 'Donate'];
+const DICT_TABS = ['Home', 'Clubs', 'Initiatives', 'Fundraising', 'BeforeAfterSchool', 'GeneralInfo', 'Donate'];
 const TABLE_TABS = {
 	ClubsCards: ['section', 'image', 'heading', 'text'],
+	InitiativesCards: ['section', 'image', 'heading', 'text'],
+	GardenSponsors: ['label', 'image', 'href'],
 	BoardMembers: ['group', 'role', 'name'],
 	Donors: ['label', 'image', 'href'],
 	FundraisingPartners: ['heading', 'text', 'href', 'button']

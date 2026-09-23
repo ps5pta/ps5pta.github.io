@@ -19,6 +19,7 @@
 		<div>
 			<h4>Quick Links</h4>
 			<p><a href="/donate">Donate</a></p>
+			<p><a href="/clubs">Clubs</a></p>
 			<p><a href="/general-school-info">General School Info</a></p>
 			<p><a href="/before-after-school-programs">Before &amp; After School Programs</a></p>
 		</div>

@@ -1,0 +1,37 @@
+[
+  {
+    "label": "Whole Kids Foundation",
+    "image": "img/garden/sponsor-whole-kids-foundation.jpg",
+    "href": "https://wholefoodsmarketfoundation.org/our-work/childrens-nutrition"
+  },
+  {
+    "label": "Wild Ones",
+    "image": "img/garden/sponsor-wild-ones.jpg",
+    "href": "https://wildones.org"
+  },
+  {
+    "label": "PS5 PTA",
+    "image": "img/garden/sponsor-ps5-pta.jpg",
+    "href": "/"
+  },
+  {
+    "label": "Hudson County, NJ",
+    "image": "img/garden/sponsor-hudson-county-nj.jpg",
+    "href": "https://hcnj.us"
+  },
+  {
+    "label": "Sustainable Jersey",
+    "image": "img/garden/sponsor-sustainable-jersey.png",
+    "href": "https://www.sustainablejersey.com"
+  },
+  {
+    "label": "Puffin Foundation",
+    "image": "img/garden/sponsor-puffin-foundation.jpg",
+    "href": "https://puffinfoundation.org"
+  },
+  {
+    "label": "NJEA",
+    "image": "img/garden/sponsor-njea.jpg",
+    "href": "https://njea.org"
+  }
+]

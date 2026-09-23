@@ -39,7 +39,7 @@
 >
 	<div class="btn-row" style="justify-content:center;">
 		<a class="btn" href="/donate">Support the PTA</a>
-		<a class="btn outline" href="/clubs-initiatives">Explore Clubs &amp; Initiatives</a>
+		<a class="btn outline" href="/clubs">Explore Clubs &amp; Initiatives</a>
 	</div>
 </Hero>
 
