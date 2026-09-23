@@ -5,7 +5,8 @@
   "intro.contactNote": "Want to get involved? Email us at jerseycityps5pta@gmail.com.",
 
   "chess.logo": "img/chess/chess-club-logo.png",
-  "chess.tagline": "Free. Competitive. Screen-free.",
+  "chess.photo": "img/clubs/chess-club.jpg",
+  "chess.tagline": "Friday Chess Club",
   "chess.subtitle": "Open to all levels — meet us Fridays year round",
   "chess.bullet[0]": "Free for everyone, all skill levels welcome — beginners to advanced",
   "chess.bullet[1]": "Fridays year round at the school garden (or nearby if weather is bad)",
@@ -16,6 +17,7 @@
   "chess.closing": "Want to help run Chess Club or bring snacks? Email jerseycityps5pta@gmail.com.",
 
   "garden.logo": "img/garden/garden-club-logo.png",
+  "garden.photo": "https://drive.google.com/file/d/1nLvSq9Bqnl6slVgIu7L_lHSakStiQAbA/view?usp=drive_link",
   "garden.tagline": "SMALL GARDEN HUGE IMPACT",
   "garden.subtitle": "P.S.5 Garden Club for Grades 6-8 — Wednesdays 3-4PM",
   "garden.program[0]": "Stem for S.T.E.M",
