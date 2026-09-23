@@ -62,13 +62,6 @@
 
 <section class="block alt" id="chess-club">
 	<div class="container">
-		{#if c['chess.photo']}
-			<img
-				src={resolveImagePath(c['chess.photo'])}
-				alt="Chess Club"
-				style="float:left; width:160px; height:auto; border-radius:10px; margin:0 24px 16px 0;"
-			/>
-		{/if}
 		{#if c['chess.logo']}
 			<img
 				src={resolveImagePath(c['chess.logo'])}
@@ -78,26 +71,28 @@
 		{/if}
 		<h2 class="text-center">{c['chess.tagline']}</h2>
 		<p class="lead text-center" style="margin:0 auto;">{c['chess.subtitle']}</p>
-		{#if chessBullets.length > 0}
-			<ul class="grid cols-2" style="margin-top:24px; clear:left;">
-				{#each chessBullets as item}
-					<li>{item}</li>
-				{/each}
-			</ul>
-		{/if}
-		<p class="lead text-center" style="margin:24px auto 0;">{c['chess.closing']}</p>
+		<div style="margin-top:24px;">
+			{#if c['chess.photo']}
+				<img
+					src={resolveImagePath(c['chess.photo'])}
+					alt="Chess Club"
+					style="float:left; width:160px; height:auto; border-radius:10px; margin:0 24px 16px 0;"
+				/>
+			{/if}
+			{#if chessBullets.length > 0}
+				<ul class="grid cols-2">
+					{#each chessBullets as item}
+						<li>{item}</li>
+					{/each}
+				</ul>
+			{/if}
+		</div>
+		<p class="lead text-center" style="margin:24px auto 0; clear:left;">{c['chess.closing']}</p>
 	</div>
 </section>
 
 <section class="block" id="garden-club">
 	<div class="container">
-		{#if c['garden.photo']}
-			<img
-				src={resolveImagePath(c['garden.photo'])}
-				alt="Garden Club"
-				style="float:left; width:160px; height:auto; border-radius:10px; margin:0 24px 16px 0;"
-			/>
-		{/if}
 		{#if c['garden.logo']}
 			<img
 				src={resolveImagePath(c['garden.logo'])}
@@ -107,14 +102,23 @@
 		{/if}
 		<h2 class="text-center">{c['garden.tagline']}</h2>
 		<p class="lead text-center" style="margin:0 auto;">{c['garden.subtitle']}</p>
-		{#if gardenProgram.length > 0}
-			<ul class="grid cols-2" style="margin-top:24px; clear:left;">
-				{#each gardenProgram as item}
-					<li>{item}</li>
-				{/each}
-			</ul>
-		{/if}
-		<p class="lead text-center" style="margin:24px auto 0;">{c['garden.closing']}</p>
+		<div style="margin-top:24px;">
+			{#if c['garden.photo']}
+				<img
+					src={resolveImagePath(c['garden.photo'])}
+					alt="Garden Club"
+					style="float:left; width:160px; height:auto; border-radius:10px; margin:0 24px 16px 0;"
+				/>
+			{/if}
+			{#if gardenProgram.length > 0}
+				<ul class="grid cols-2">
+					{#each gardenProgram as item}
+						<li>{item}</li>
+					{/each}
+				</ul>
+			{/if}
+		</div>
+		<p class="lead text-center" style="margin:24px auto 0; clear:left;">{c['garden.closing']}</p>
 		{#if gardenSponsors.length > 0}
 			<DonorStrip donors={gardenSponsors} maxHeight={56} showLabels={false} />
 		{/if}
