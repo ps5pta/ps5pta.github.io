@@ -10,6 +10,9 @@
 
 	let events = $derived(pluckIndexed(c, 'events'));
 
+	const bookmarkletHref =
+		"javascript:void(window.open('https://ps5pta.org/amazon','_blank'))";
+
 	const galleryImages = [
 		'DSC08318.jpg',
 		'DSC07948.jpg',
@@ -66,6 +69,14 @@
 				</Card>
 			{/each}
 		</div>
+	</div>
+</section>
+
+<section class="block">
+	<div class="container text-center">
+		<h2>{c['bookmarklet.heading']}</h2>
+		<p class="lead" style="margin:0 auto 20px;">{c['bookmarklet.body']}</p>
+		<a class="btn" href={bookmarkletHref} draggable="true">{c['bookmarklet.label']}</a>
 	</div>
 </section>
 
