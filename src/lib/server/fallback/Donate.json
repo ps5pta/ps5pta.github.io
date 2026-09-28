@@ -14,10 +14,13 @@
   "givebacks.buttonLabel": "Join via Givebacks",
 
   "cash.title": "Cash",
-  "cash.body": "Prefer in person? Hand your donation to your child's teacher or any PTA board member. Every dollar goes toward our school community.",
-  "cash.note": "No link needed — just show up!",
+  "cash.body": "Prefer in person? Hand your donation to any PTA board member or look for a tip jar at any event. Every dollar goes toward our school community.",
+  "cash.note": "",
 
   "notice.body": "PS5 PTA is a 501(c)3 nonprofit organization — your donation is tax-deductible. EIN: 46-1009361.",
+
+  "colorfest.heading": "Colorfest 2026",
+  "colorfest.body": "Our biggest annual fundraiser is back! Track our progress toward this year's goal and give directly below.",
 
   "where.heading": "Where Your Money Goes",
   "where.body": "Every dollar supports programs directly benefiting PS5 students — theater, dance, assemblies, multicultural celebrations, school improvements, carnivals, awards, after-school enrichment, and family support.",
