@@ -31,6 +31,7 @@ const TABLE_TABS = {
 	ClubsCards: ['section', 'image', 'heading', 'text'],
 	InitiativesCards: ['section', 'image', 'heading', 'text'],
 	GardenSponsors: ['label', 'image', 'href'],
+	FAQ: ['category', 'question', 'answer'],
 	BoardMembers: ['group', 'role', 'name'],
 	Donors: ['label', 'image', 'href'],
 	FundraisingPartners: ['heading', 'text', 'href', 'button']

@@ -7,6 +7,7 @@ import ClubsCardsFallback from './fallback/ClubsCards.json';
 import InitiativesFallback from './fallback/Initiatives.json';
 import InitiativesCardsFallback from './fallback/InitiativesCards.json';
 import GardenSponsorsFallback from './fallback/GardenSponsors.json';
+import FAQFallback from './fallback/FAQ.json';
 import BoardMembersFallback from './fallback/BoardMembers.json';
 import DonorsFallback from './fallback/Donors.json';
 import FundraisingFallback from './fallback/Fundraising.json';
@@ -31,6 +32,7 @@ const TABLE_FALLBACKS = {
 	ClubsCards: ClubsCardsFallback,
 	InitiativesCards: InitiativesCardsFallback,
 	GardenSponsors: GardenSponsorsFallback,
+	FAQ: FAQFallback,
 	BoardMembers: BoardMembersFallback,
 	Donors: DonorsFallback,
 	FundraisingPartners: FundraisingPartnersFallback
