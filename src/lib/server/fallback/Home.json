@@ -2,7 +2,7 @@
   "hero.eyebrow": "Dr. Michael Conti PS5 · Jersey City",
   "hero.title": "At Conti, we believe we can achieve.",
   "hero.subtitle": "Our mission is to make every child's potential a reality by engaging and empowering families and communities to advocate for all children.",
-  "hero.image": "img/home/hero-unsplash.jpg",
+  "hero.image": "https://drive.google.com/file/d/1qOYQGhJAH7YQ59RPMpE2DmqC_dwrFqlc/view?usp=drive_link",
 
   "whatWeDo.heading": "What We Do",
   "whatWeDo.lead": "The PS5 PTA is a National PTA member and 501(c)3 charitable organization. We fundraise to provide enrichment programs including theater, dance, assemblies, multicultural celebrations, school improvements, carnivals, awards, and family support.",
@@ -13,8 +13,14 @@
   "whatWeDo.bullet[4]": "Foster parent-teacher collaboration",
   "whatWeDo.contactEmail": "jerseycityps5pta@gmail.com",
 
+  "colorfest.heading": "Colorfest 2026",
+  "colorfest.body": "Our biggest annual fundraiser is back! Track our progress toward this year's goal and give directly below.",
+
   "whatsOn.heading": "What's On",
   "whatsOn.lead": "JCPS District Calendar, 2026–2027 school year.",
+  "whatsOn.ptaCalendarLabel": "PTA Events, Holidays & Half Days Calendar",
+  "whatsOn.ptaCalendarHref": "https://calendar.google.com/calendar/u/5?cid=ZGYzMDY2ZTk4ZTU4MDhmM2Q5NDFjOTUxMDRhMDYzMjM1NWE3YzEyNzU5MWFkOTExMjI3OTkxMjkyZjc1OTg3YUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t",
+  "whatsOn.socialsLabel": "Follow us:",
 
   "board.heading": "Our Board",
 
