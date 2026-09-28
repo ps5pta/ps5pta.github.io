@@ -1,16 +1,26 @@
 <script>
+	import { onMount } from 'svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Card from '$lib/components/Card.svelte';
 
 	let { data } = $props();
 	let c = $derived(data.content);
+
+	onMount(() => {
+		// The widget script scans the DOM for .fundraising-embeddable-widget on load,
+		// so it must be injected after that element exists — loading it in <svelte:head>
+		// runs it before <body> is parsed and it silently finds nothing to initialize.
+		const script = document.createElement('script');
+		script.src = 'https://app.givebacks.gives/Scripts/widgets/campaign-fundraising-widget.js';
+		document.body.appendChild(script);
+		return () => script.remove();
+	});
 </script>
 
 <svelte:head>
 	<title>Donate — PS5 PTA</title>
 	<meta name="description" content="Support the PS5 PTA through PayPal, Givebacks membership, or cash donations." />
 	<link href="https://app.givebacks.gives/Content/widgets/campaign-fundraising-widget.css" rel="stylesheet" />
-	<script src="https://app.givebacks.gives/Scripts/widgets/campaign-fundraising-widget.js"></script>
 </svelte:head>
 
 <Hero eyebrow={c['hero.eyebrow']} title={c['hero.title']} subtitle={c['hero.subtitle']} />
