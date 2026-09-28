@@ -22,7 +22,6 @@
 			<p><a href="/clubs">Clubs</a></p>
 			<p><a href="/general-school-info">General School Info</a></p>
 			<p><a href="/before-after-school-programs">Before &amp; After School Programs</a></p>
-			<p><a href="/faq">FAQ</a></p>
 		</div>
 	</div>
 	<div class="footer-bottom">

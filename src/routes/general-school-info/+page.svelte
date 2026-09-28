@@ -1,8 +1,8 @@
 <script>
 	import Hero from '$lib/components/Hero.svelte';
 	import Card from '$lib/components/Card.svelte';
-	import Faq from '$lib/components/Faq.svelte';
-	import { pluckList, pluckIndexed } from '$lib/content-utils.js';
+	import RichText from '$lib/components/RichText.svelte';
+	import { pluckList, pluckIndexed, groupBy } from '$lib/content-utils.js';
 
 	let { data } = $props();
 	let c = $derived(data.content);
@@ -11,7 +11,7 @@
 	let middleBullets = $derived(pluckList(c, 'uniform.middle.bullet'));
 	let scheduleTimes = $derived(pluckIndexed(c, 'schedule.times'));
 	let attendanceBullets = $derived(pluckList(c, 'attendance.bullet'));
-	let faqItems = $derived(pluckIndexed(c, 'faq'));
+	let faqCategories = $derived(groupBy(data.faqs, 'category'));
 	let schoolLinks = $derived(pluckIndexed(c, 'links.school'));
 	let portalLinks = $derived(pluckIndexed(c, 'links.portals'));
 	let docLinks = $derived(pluckIndexed(c, 'links.docs'));
@@ -80,9 +80,17 @@
 <section class="block">
 	<div class="container">
 		<h2>{c['faq.heading']}</h2>
-		<div class="card">
-			<Faq items={faqItems} />
-		</div>
+		{#each faqCategories as cat}
+			<h3 style="margin-top:28px;">{cat.key}</h3>
+			<div class="card faq">
+				{#each cat.items as item}
+					<details>
+						<summary>{item.question}</summary>
+						<RichText text={item.answer} />
+					</details>
+				{/each}
+			</div>
+		{/each}
 	</div>
 </section>
 

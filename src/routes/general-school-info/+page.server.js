@@ -1,6 +1,6 @@
-import { getPageContent } from '$lib/server/sheets';
+import { getPageContent, getCardRows } from '$lib/server/sheets';
 
 export async function load() {
-	const content = await getPageContent('GeneralInfo');
-	return { content };
+	const [content, faqs] = await Promise.all([getPageContent('GeneralInfo'), getCardRows('FAQ')]);
+	return { content, faqs };
 }

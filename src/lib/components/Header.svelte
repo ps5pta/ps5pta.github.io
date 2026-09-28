@@ -7,8 +7,7 @@
 		{ href: '/initiatives', label: 'Initiatives' },
 		{ href: '/fundraising-events', label: 'Fundraising & Events' },
 		{ href: '/before-after-school-programs', label: 'Before & After' },
-		{ href: '/general-school-info', label: 'School Info' },
-		{ href: '/faq', label: 'FAQ' }
+		{ href: '/general-school-info', label: 'School Info' }
 	];
 
 	function isActive(href) {
