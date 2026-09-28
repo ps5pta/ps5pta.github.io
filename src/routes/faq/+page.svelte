@@ -25,13 +25,11 @@
 	<section class="block" class:alt={i % 2 === 0}>
 		<div class="container">
 			<h2>{cat.key}</h2>
-			<div style="margin-top:20px;">
+			<div class="card faq" style="margin-top:20px;">
 				{#each cat.items as item}
-					<details style="margin-bottom:12px; border-bottom:1px solid var(--border, #e0e0e0); padding-bottom:12px;">
-						<summary style="cursor:pointer; font-weight:600; font-size:1.05rem;">{item.question}</summary>
-						<div style="margin-top:10px;">
-							<RichText text={item.answer} />
-						</div>
+					<details>
+						<summary>{item.question}</summary>
+						<RichText text={item.answer} />
 					</details>
 				{/each}
 			</div>

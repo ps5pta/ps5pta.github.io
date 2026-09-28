@@ -9,6 +9,7 @@
 	let c = $derived(data.content);
 	let sections = $derived(groupBySection(data.cards));
 	let getInvolvedItems = $derived(pluckList(c, 'getInvolved.item'));
+	let moreClubsItems = $derived(pluckList(c, 'moreClubs.item'));
 	let chessBullets = $derived(pluckList(c, 'chess.bullet'));
 	let gardenProgram = $derived(pluckList(c, 'garden.program'));
 	let gardenSponsors = $derived(
@@ -125,7 +126,21 @@
 	</div>
 </section>
 
-<section class="block alt text-center" id="get-involved">
+<section class="block alt" id="more-clubs">
+	<div class="container">
+		<h2>{c['moreClubs.heading']}</h2>
+		<p class="lead">{c['moreClubs.lead']}</p>
+		{#if moreClubsItems.length > 0}
+			<ul class="grid cols-3" style="margin-top:24px;">
+				{#each moreClubsItems as item}
+					<li>{item}</li>
+				{/each}
+			</ul>
+		{/if}
+	</div>
+</section>
+
+<section class="block text-center" id="get-involved">
 	<div class="container">
 		<h2>{c['getInvolved.heading']}</h2>
 		<p class="lead" style="margin:0 auto;">{c['getInvolved.body']}</p>
