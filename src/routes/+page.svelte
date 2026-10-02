@@ -44,32 +44,10 @@
 </Hero>
 
 <section class="block">
-	<div class="container">
-		<h2>{c['whatWeDo.heading']}</h2>
-		<p class="lead">{c['whatWeDo.lead']}</p>
-		<div class="grid cols-2" style="align-items:center; margin-top:32px;">
-			<div>
-				<ul>
-					{#each bullets as bullet}
-						<li>{bullet}</li>
-					{/each}
-				</ul>
-				<p>Questions or ideas? Reach us at <a href="mailto:{c['whatWeDo.contactEmail']}">{c['whatWeDo.contactEmail']}</a>.</p>
-			</div>
-			<img src="/assets/img/home/what-we-do-IMG_5491.jpg" alt="PS5 students at a school event" />
-		</div>
-		<div class="grid cols-2" style="margin-top:22px;">
-			<img src="/assets/img/home/DSC07026.jpg" alt="PS5 school community event" />
-			<img src="/assets/img/home/DSC07328.jpg" alt="PS5 school community event" />
-		</div>
-	</div>
-</section>
-
-<section class="block alt">
 	<ColorfestWidget heading={c['colorfest.heading']} body={c['colorfest.body']} />
 </section>
 
-<section class="block">
+<section class="block alt">
 	<div class="container">
 		<h2>{c['whatsOn.heading']}</h2>
 		<p class="lead">{c['whatsOn.lead']}</p>
@@ -87,6 +65,28 @@
 			<a href="https://www.instagram.com/ps5pta/" aria-label="PS5 PTA on Instagram" style="font-size:1.6rem;">📷</a>
 			<a href="https://www.instagram.com/ps5jcofficial/" aria-label="PS5 JC Official on Instagram" style="font-size:1.6rem;">📷</a>
 			<a href="https://www.facebook.com/groups/PS5School" aria-label="PS5 PTA on Facebook" style="font-size:1.6rem;">👥</a>
+		</div>
+	</div>
+</section>
+
+<section class="block">
+	<div class="container">
+		<h2>{c['whatWeDo.heading']}</h2>
+		<p class="lead">{c['whatWeDo.lead']}</p>
+		<div class="grid cols-2" style="align-items:center; margin-top:32px;">
+			<div>
+				<ul>
+					{#each bullets as bullet}
+						<li>{bullet}</li>
+					{/each}
+				</ul>
+				<p>Questions or ideas? Reach us at <a href="mailto:{c['whatWeDo.contactEmail']}">{c['whatWeDo.contactEmail']}</a>.</p>
+			</div>
+			<img src="/assets/img/home/what-we-do-IMG_5491.jpg" alt="PS5 students at a school event" />
+		</div>
+		<div class="grid cols-2" style="margin-top:22px;">
+			<img src="/assets/img/home/DSC07026.jpg" alt="PS5 school community event" />
+			<img src="/assets/img/home/DSC07328.jpg" alt="PS5 school community event" />
 		</div>
 	</div>
 </section>

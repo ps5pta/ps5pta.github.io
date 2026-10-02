@@ -30,10 +30,7 @@
 			data-initialized="false"
 		>
 			<div class="fundraising-embeddable-widget-img-container">
-				<img
-					src="https://d2jjj41xkpuaip.cloudfront.net/246x164/RallyUpProduction/4f80dcd40d7f67b39c787dc94a4c4b38.png"
-					alt=""
-				/>
+				<img src="/assets/img/fundraising/colorfest-2026.png" alt="Colorfest 2026 — PS5 PTA fundraiser" />
 			</div>
 			<div class="fundraising-embeddable-widget-headline" style="color: rgb(243, 33, 33);"></div>
 			<div class="fundraising-embeddable-widget-body" style="color: rgb(142, 142, 142);"></div>
