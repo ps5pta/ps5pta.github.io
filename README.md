@@ -6,26 +6,16 @@ SvelteKit static site for the Jersey City PS5 PTA, deployed via GitHub Pages and
 
 Page copy lives in a Google Sheet (one tab per page: `Home`, `Clubs`, `Fundraising`, `BeforeAfterSchool`, `GeneralInfo`, `Donate`). Each tab has `key | label | value | notes` columns — **only edit the `value` column**. Everything is fetched at build time via a service account; nothing runs client-side.
 
-If Sheets credentials aren't configured (e.g. local dev), the build falls back to the committed JSON fixtures in `src/lib/server/fallback/`.
+The live Sheet is the single source of truth. Dev and build both fail without Sheets credentials.
 
 ## Development
 
 ```sh
 npm install
-npm run dev       # uses fallback fixtures, no credentials needed
-npm run build     # set GOOGLE_SERVICE_ACCOUNT_KEY + CONTENT_SHEET_ID to pull live content
+npm run dev       # needs GOOGLE_SERVICE_ACCOUNT_KEY + CONTENT_SHEET_ID (e.g. in a gitignored .env)
+npm run build     # same env vars required
 npm run preview
 ```
-
-## Updating the Google Sheet from fallback fixtures
-
-```sh
-node scripts/seed-sheet.mjs --key /path/to/service-account.json --sheet-id <SHEET_ID> --tabs Clubs,FundraisingPartners
-```
-
-Overwrites only the listed tab(s) with the current fallback JSON. This discards any live edits made directly in the Sheet for those specific tabs since the fixtures were last committed — make sure your local fixture reflects the state you actually want before running it.
-
-A full reseed of every tab is rarely what you want (it wipes tabs you haven't touched locally too, e.g. volunteer-managed rosters) and requires `--all --i-understand-this-overwrites-everything`.
 
 ## Deployment
 
