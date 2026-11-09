@@ -1,8 +1,8 @@
 <script>
 	import Hero from '$lib/components/Hero.svelte';
 	import BoardList from '$lib/components/BoardList.svelte';
+	import GetConnected from '$lib/components/GetConnected.svelte';
 	import DonorStrip from '$lib/components/DonorStrip.svelte';
-	import ColorfestWidget from '$lib/components/ColorfestWidget.svelte';
 	import { groupBy, pluckList, resolveImagePath } from '$lib/content-utils.js';
 
 	let { data } = $props();
@@ -43,30 +43,8 @@
 	</div>
 </Hero>
 
-<section class="block">
-	<ColorfestWidget heading={c['colorfest.heading']} body={c['colorfest.body']} />
-</section>
-
 <section class="block alt">
-	<div class="container">
-		<h2>{c['whatsOn.heading']}</h2>
-		<p class="lead">{c['whatsOn.lead']}</p>
-		<div class="btn-row">
-			<a class="btn" href="/assets/docs/JCPS_2026-2027_Calendar.pdf">Download Calendar (PDF)</a>
-			<a
-				class="btn outline"
-				style="background:var(--navy); color:var(--white); border-color:var(--navy);"
-				href="/assets/docs/JCPS_2026-2027_List.pdf">Download Date List (PDF)</a
-			>
-			<a class="btn outline" href={c['whatsOn.ptaCalendarHref']}>{c['whatsOn.ptaCalendarLabel']}</a>
-		</div>
-		<div style="margin-top:24px; display:flex; align-items:center; gap:14px;">
-			<span style="color:var(--text-light); font-weight:600;">{c['whatsOn.socialsLabel']}</span>
-			<a href="https://www.instagram.com/ps5pta/" aria-label="PS5 PTA on Instagram" style="font-size:1.6rem;">📷</a>
-			<a href="https://www.instagram.com/ps5jcofficial/" aria-label="PS5 JC Official on Instagram" style="font-size:1.6rem;">📷</a>
-			<a href="https://www.facebook.com/groups/PS5School" aria-label="PS5 PTA on Facebook" style="font-size:1.6rem;">👥</a>
-		</div>
-	</div>
+	<GetConnected heading={c['whatsOn.heading']} lead={c['whatsOn.lead']} rows={data.connectLinks} />
 </section>
 
 <section class="block">

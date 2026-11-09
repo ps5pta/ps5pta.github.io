@@ -7,7 +7,7 @@
 
 	const BARE_ROUTES = ['/amazon', '/clubs-initiatives'];
 
-	let { children } = $props();
+	let { children, data } = $props();
 	let bare = $derived(BARE_ROUTES.includes(page.url.pathname));
 </script>
 
@@ -18,7 +18,7 @@
 
 	{@render children()}
 
-	<Footer />
+	<Footer quickLinks={data.quickLinks} />
 
 	<Lightbox />
 {/if}

@@ -1,7 +1,6 @@
 <script>
 	import Hero from '$lib/components/Hero.svelte';
 	import Card from '$lib/components/Card.svelte';
-	import ColorfestWidget from '$lib/components/ColorfestWidget.svelte';
 
 	let { data } = $props();
 	let c = $derived(data.content);
@@ -38,10 +37,6 @@
 			{c['notice.body']}
 		</div>
 	</div>
-</section>
-
-<section class="block">
-	<ColorfestWidget heading={c['colorfest.heading']} body={c['colorfest.body']} />
 </section>
 
 <section class="block alt">

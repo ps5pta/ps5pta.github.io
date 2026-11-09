@@ -1,3 +1,7 @@
+<script>
+	let { quickLinks = [] } = $props();
+</script>
+
 <footer class="site-footer">
 	<div class="footer-grid">
 		<div>
@@ -18,10 +22,9 @@
 		</div>
 		<div>
 			<h4>Quick Links</h4>
-			<p><a href="/donate">Donate</a></p>
-			<p><a href="/clubs">Clubs</a></p>
-			<p><a href="/general-school-info">General School Info</a></p>
-			<p><a href="/before-after-school-programs">Before &amp; After School Programs</a></p>
+			{#each quickLinks as link}
+				<p><a href={link.url}>{link.label}</a></p>
+			{/each}
 		</div>
 	</div>
 	<div class="footer-bottom">
