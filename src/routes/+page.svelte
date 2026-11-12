@@ -2,7 +2,6 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import BoardList from '$lib/components/BoardList.svelte';
 	import GetConnected from '$lib/components/GetConnected.svelte';
-	import DonorStrip from '$lib/components/DonorStrip.svelte';
 	import { groupBy, pluckList, resolveImagePath } from '$lib/content-utils.js';
 
 	let { data } = $props();
@@ -14,14 +13,6 @@
 		groupBy(data.boardMembers, 'group').map(({ key, items }) => ({ title: key, members: items }))
 	);
 
-	let donors = $derived(
-		data.donors.map((d) => ({
-			src: resolveImagePath(d.image),
-			alt: d.label,
-			href: d.href || undefined,
-			label: d.href ? d.label : undefined
-		}))
-	);
 </script>
 
 <svelte:head>
@@ -76,10 +67,3 @@
 	</div>
 </section>
 
-<section class="block">
-	<div class="container">
-		<h2>{c['donors.heading']}</h2>
-		<p class="lead">{c['donors.lead']}</p>
-		<DonorStrip {donors} />
-	</div>
-</section>

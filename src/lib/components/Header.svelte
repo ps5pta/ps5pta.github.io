@@ -6,6 +6,7 @@
 		{ href: '/clubs', label: 'Clubs' },
 		{ href: '/initiatives', label: 'Initiatives' },
 		{ href: '/fundraising-events', label: 'Fundraising & Events' },
+		{ href: '/local-businesses', label: 'Local Businesses' },
 		{ href: '/before-after-school-programs', label: 'Before & After' },
 		{ href: '/general-school-info', label: 'School Info' }
 	];
