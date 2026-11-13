@@ -34,10 +34,6 @@
 	</div>
 </Hero>
 
-<section class="block alt">
-	<GetConnected heading={c['whatsOn.heading']} lead={c['whatsOn.lead']} rows={data.connectLinks} />
-</section>
-
 <section class="block">
 	<div class="container">
 		<h2>{c['whatWeDo.heading']}</h2>
@@ -61,6 +57,10 @@
 </section>
 
 <section class="block alt">
+	<GetConnected heading={c['whatsOn.heading']} lead={c['whatsOn.lead']} rows={data.connectLinks} />
+</section>
+
+<section class="block">
 	<div class="container">
 		<h2>{c['board.heading']}</h2>
 		<BoardList groups={boardGroups} />
